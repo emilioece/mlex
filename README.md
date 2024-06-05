@@ -1,2 +1,2 @@
 # Machine Learning Examples 
-ai go i - > o
+Notes and examples in PyTorch (for now) 
