@@ -71,7 +71,7 @@ A custom Dataset class must implement three functions:
 ## Preparing your data for training with DataLoaders
 The `Dataset` retrieves our dataset's features and labels one sample at a time 
 
-While trianingn a model, we want to pass minibatches of data and reshuffle the data at every epoch to reduce the model overfitting and use Python's `multiprocessing` to speed up data retrieval.  
+While training a model, we want to pass minibatches of data and reshuffle the data at every epoch to reduce the model overfitting and use Python's `multiprocessing` to speed up data retrieval.  
 
 For this  reason, `DataLoader` is an iterable that abstracts this complexity for us in an easy API.
 
@@ -97,7 +97,7 @@ For iterable-style datasheets, data loading order is entirely controlled by the 
 	- easier implementations of chunk reading and dynamic batch size 
 
 map-style datasets 
-	- torch.utils.data.Sampler
+	- `torch.utils.data.Sampler`
 		- classes used to specify the sequence of indices/keys in data loading
 		- represend iterable objects over indices to datasets 
 		- `Sampler` cvould randomly permute a list of indices and yield each one at a time 
@@ -126,19 +126,19 @@ We get predicition probabilities by passing it through an instance of nn.Softmax
 `nn.Flatten`
 	- intialize nn.Flatten layer to convert each 2D image into contiguous array of 784 pixel values (minibatch dimension when dim = 0 is maintained)
 
-'nn.Linear'
+`nn.Linear`
 	- applies linear transformation on the input using its stored weights and based
 	- infeatures:int, out_features:int, bias=True, device=None, dtype=None
 	- https://pytorch.org/docs/stable/generated/torch.nn.Linear.html
-'nn.ReLU'
+`nn.ReLU`
 	- non linear activatoins are what create complex mappings between the model's inputs and outputs. they are applied after linear transformations to introduce nonlinearity to help neural networks learn better (?)
 	- other activations exists to introduce non-linearity in your model but using ReLU for example :D
-'nn.Sequential'
+`nn.Sequential`
 	- ordered container of modules 
 		- data is passed through all the modules in the same order as defined 
 		- use sequential containers to put together quick network
 			- like `seq_modules` (see neural.py)
-'nn.Softmax'
+`nn.Softmax`
 	- last linear layer of neural networks returns 'logits'
 		- raw values in [-infty, infty]
 	- logits are scaled to values [0,1], representing model's predicted probabilites for each class 
