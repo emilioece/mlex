@@ -103,3 +103,58 @@ map-style datasets
 		- `Sampler` cvould randomly permute a list of indices and yield each one at a time 
 			- or yield a small number of htme for minibatch SGD
 				- Stochastic gradient descent; split dataset into small subsets (batches) and compute gradients for each batch 
+
+
+# Build the Neural Network
+Neural networks are comprised on layers/modules that preofrm operations on data.
+	- `torch.nn` namespace provides all the building blocks you need to build your own neural network 
+		- every module in PyTorch subclasses `nn.Module`
+			- A neural network is a module itself that consists of other modules/layers
+
+Create a nn as a PythonClass with designated layers with 'nn.Sequential' {see neural.py}
+
+## Calling the model 
+Returns a 2-diemntional tensor with dim=0 corresponding to each output of 10 raw prediced values for each class, and dim = 1 corresponding to the indvidiual vlaues of each output 
+
+We get predicition probabilities by passing it through an instance of nn.Softmax module
+
+
+	- Pass tensors in model and nn.Softmax(dim = 1)(logits)
+		- argmax(1)
+
+## Model Layers 
+`nn.Flatten`
+	- intialize nn.Flatten layer to convert each 2D image into contiguous array of 784 pixel values (minibatch dimension when dim = 0 is maintained)
+
+'nn.Linear'
+	- applies linear transformation on the input using its stored weights and based
+	- infeatures:int, out_features:int, bias=True, device=None, dtype=None
+	- https://pytorch.org/docs/stable/generated/torch.nn.Linear.html
+'nn.ReLU'
+	- non linear activatoins are what create complex mappings between the model's inputs and outputs. they are applied after linear transformations to introduce nonlinearity to help neural networks learn better (?)
+	- other activations exists to introduce non-linearity in your model but using ReLU for example :D
+'nn.Sequential'
+	- ordered container of modules 
+		- data is passed through all the modules in the same order as defined 
+		- use sequential containers to put together quick network
+			- like `seq_modules` (see neural.py)
+'nn.Softmax'
+	- last linear layer of neural networks returns 'logits'
+		- raw values in [-infty, infty]
+	- logits are scaled to values [0,1], representing model's predicted probabilites for each class 
+	- 'dim' parameter indicates the dimension along which the values must sum to 1
+		- normalizing results in batches (?)
+
+## Model Parameters
+Many layers inside a neural network are paramertized with associated weights / biases. 
+
+Subclassing `nn.Module` automatically tracks all fields defined inside your model object
+	- parameter's accessible using your model's `parameters()` or `named_parameters() methods`
+
+# Remarks 
+## Devices 
+- CUDA 
+	- Nvidia 
+- MPS
+	- MACOS  + METAL ( ? )
+- CPU
