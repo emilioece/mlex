@@ -40,7 +40,7 @@ Each of them can be run on the GPU, typically higher speeds that on a CPU
 
 
 ## Note 
-	-pytorch domain libraries has a number o fpreloaded dataset that subclass inside ** torch.utils.data.Dataset ** and implement functions specific to particular data.
+	-pytorch domain libraries has a number of preloaded dataset that subclass inside ** torch.utils.data.Dataset ** and implement functions specific to particular data.
 	- Used to prototype and benchmark model
 		- https://pytorch.org/vision/stable/datasets.html
 
@@ -114,7 +114,7 @@ Neural networks are comprised on layers/modules that preofrm operations on data.
 Create a nn as a PythonClass with designated layers with 'nn.Sequential' {see neural.py}
 
 ## Calling the model 
-Returns a 2-diemntional tensor with dim=0 corresponding to each output of 10 raw prediced values for each class, and dim = 1 corresponding to the indvidiual vlaues of each output 
+Returns a 2-dimensional tensor with dim=0 corresponding to each output of 10 raw prediced values for each class, and dim = 1 corresponding to the indvidiual vlaues of each output 
 
 We get predicition probabilities by passing it through an instance of nn.Softmax module
 
